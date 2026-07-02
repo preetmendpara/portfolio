@@ -1,0 +1,6 @@
+# Cross-origin isolation for the Godot (tower-defense) WebAssembly game.
+# Required for the engine to run; scoped so it doesn't affect the main site.
+/tower-defense/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: cross-origin
