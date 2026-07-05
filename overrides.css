@@ -59,15 +59,10 @@ html[data-theme="dark"] {
   scrollbar-color: #a06cd5 #1c1c22;
 }
 
-/* Gentle hover motion for interactive elements */
-a,
-button {
-  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
-}
-a:hover,
-button:hover {
-  transform: translateY(-1px);
-}
+/* NOTE: no transform-based hover effects here. The compiled app positions
+   some interactive elements (e.g. the theme toggle) via CSS transforms, and
+   an element-level `:hover { transform: ... }` override replaces that
+   positioning transform, making the element jump out of place. */
 
 /* Keyboard focus visible in accent purple */
 a:focus-visible,
