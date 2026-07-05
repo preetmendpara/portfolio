@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Polish overrides — layered on top of the compiled SPA bundle.
+   Only element-level rules here: the bundle's class names are hashed and
+   must not be referenced. The app's theme toggle sets data-theme="dark"
+   on <html>, so light-only tweaks are scoped to :not([data-theme="dark"]).
+   ========================================================================== */
+
+/* Warm paper background instead of stark white — light theme only */
+html:not([data-theme="dark"]),
+html:not([data-theme="dark"]) body {
+  background-color: #faf6ee !important;
+}
+
+/* Text selection in the site's amber accent */
+::selection {
+  background: #f5a623;
+  color: #1a1a1a;
+}
+
+/* Slim retro scrollbar — light theme */
+html:not([data-theme="dark"]) ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+html:not([data-theme="dark"]) ::-webkit-scrollbar-track {
+  background: #efe9dd;
+}
+html:not([data-theme="dark"]) ::-webkit-scrollbar-thumb {
+  background: #a06cd5;
+  border: 3px solid #efe9dd;
+  border-radius: 0; /* square = pixel aesthetic */
+}
+html:not([data-theme="dark"]) ::-webkit-scrollbar-thumb:hover {
+  background: #8a53c2;
+}
+html:not([data-theme="dark"]) {
+  scrollbar-width: thin;
+  scrollbar-color: #a06cd5 #efe9dd;
+}
+
+/* Slim retro scrollbar — dark theme */
+html[data-theme="dark"] ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #1c1c22;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #a06cd5;
+  border: 3px solid #1c1c22;
+  border-radius: 0;
+}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #b98ae0;
+}
+html[data-theme="dark"] {
+  scrollbar-width: thin;
+  scrollbar-color: #a06cd5 #1c1c22;
+}
+
+/* Gentle hover motion for interactive elements */
+a,
+button {
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
+}
+a:hover,
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Keyboard focus visible in accent purple */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #a06cd5;
+  outline-offset: 2px;
+}
+
+/* Keep sprite art crisp if the browser ever scales it */
+img {
+  image-rendering: pixelated;
+}
