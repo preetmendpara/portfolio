@@ -75,3 +75,17 @@ button:focus-visible {
 img {
   image-rendering: pixelated;
 }
+
+/* Pin the theme toggle to the viewport top-right. By default the app
+   absolutely-positions it inside the animated sun/moon sprite container,
+   so it drifted around with the sprite. (.theme-text-button is an
+   unhashed app class, verified stable across builds.) */
+.theme-text-button {
+  position: fixed !important;
+  top: 14px !important;
+  right: 18px !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: 9999 !important;
+}
