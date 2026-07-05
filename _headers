@@ -1,5 +1,4 @@
-# Non-CSP security headers, applied everywhere (safe to share with
-# /tower-defense/* since these don't get duplicated/combined like CSP does).
+# Non-CSP security headers, applied everywhere.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
@@ -7,11 +6,9 @@
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Root CSP — scoped to exact HTML entry points only. Cloudflare Pages
-# combines (does not override) same-named headers from multiple matching
-# _headers rules, so this must NOT use a /* wildcard or it would double up
-# with the /tower-defense/* CSP below and silently break the game (browsers
-# intersect multiple CSP headers on the same response).
+# CSP — scoped to exact HTML entry points. Cloudflare Pages combines (does
+# not override) same-named headers across matching _headers rules, so keep
+# CSP off the /* wildcard to avoid accidental doubling on future paths.
 /
   Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-OkwVmhRLT0w/RgbUvv0uG3REjUkysEKgB5OsVYoKaoQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
@@ -20,11 +17,3 @@
 
 /404.html
   Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-OkwVmhRLT0w/RgbUvv0uG3REjUkysEKgB5OsVYoKaoQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
-
-# Cross-origin isolation for the Godot (tower-defense) WebAssembly game,
-# plus its own CSP allowing 'wasm-unsafe-eval' for WASM instantiation.
-/tower-defense/*
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Embedder-Policy: require-corp
-  Cross-Origin-Resource-Policy: cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
