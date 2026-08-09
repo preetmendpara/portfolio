@@ -17,3 +17,13 @@
 
 /404.html
   Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-OkwVmhRLT0w/RgbUvv0uG3REjUkysEKgB5OsVYoKaoQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# Our hand-written CSS/JS. Honoured on *.pages.dev, but preetmendpara.qzz.io is a
+# subdomain of DigitalPlat's Cloudflare zone, which rewrites this to
+# max-age=14400. That zone is not in our account, so we cannot change it — hence
+# the ?v= query on these two files in the HTML, bumped for us by deploy.bat.
+/overrides.css
+  Cache-Control: no-cache
+
+/enhancements.js
+  Cache-Control: no-cache
