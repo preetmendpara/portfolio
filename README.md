@@ -6,6 +6,12 @@ Static site hosted on Cloudflare Pages. Everything served to the browser lives i
 
 ## Deploy
 
+Double-click **`deploy.bat`**. It bumps the cache version, deploys, checks the live
+site, and keeps the window open. If it says you're not logged in, run `npx wrangler login`
+once — the OAuth token dies after a few weeks of not deploying.
+
+Manual equivalent:
+
 ```bash
 npx wrangler pages deploy public --project-name=preet-mendpara-portfolio --branch=main --commit-dirty=true
 ```
@@ -31,9 +37,11 @@ public/
 is not in this repo, so the app itself can't be meaningfully edited here. Our
 changes ride on top via `overrides.css` and `enhancements.js`.
 
-- **Bump the `?v=` query on `overrides.css` / `enhancements.js` in both HTML files
-  whenever you edit them** — otherwise Cloudflare's edge and browsers keep serving
-  the old file.
+- The `?v=` query on `overrides.css` / `enhancements.js` is bumped automatically by
+  `deploy.bat`, so edits reach visitors. It's needed because `preetmendpara.qzz.io`
+  is a subdomain of DigitalPlat's Cloudflare zone, which overrides our
+  `Cache-Control: no-cache` with `max-age=14400`. That zone isn't in this account,
+  so the URL itself has to change.
 - Avoid `transform` in hover rules in `overrides.css`. The compiled app positions
   some elements (the theme toggle) with transforms; overriding them makes elements
   jump. `enhancements.js` calls `clearProps` after each reveal for the same reason.
