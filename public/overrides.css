@@ -89,3 +89,62 @@ img {
   transform: none !important;
   z-index: 9999 !important;
 }
+
+/* ==========================================================================
+   2026 refresh — layout, readability and responsiveness polish.
+   ========================================================================== */
+
+html { scroll-behavior: smooth; }
+
+/* About: comfortable reading width and rhythm */
+.about-text p {
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+/* Featured projects: up to 3 per row on desktop, 1 on phones */
+.quest-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)) !important;
+}
+.quest-card { display: flex !important; flex-direction: column; }
+.quest-card p { flex: 1; }
+.quest-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* Legendary cards get a soft pulsing glow (box-shadow only, no transform) */
+@media (prefers-reduced-motion: no-preference) {
+  .quest-legendary { animation: quest-glow 3.2s ease-in-out infinite; }
+}
+@keyframes quest-glow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(245,166,35,0)); }
+  50%      { filter: drop-shadow(0 0 10px rgba(245,166,35,.45)); }
+}
+
+/* Skills: chip grid instead of a tall single column */
+.skills-section ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+.skills-section li {
+  margin: 0 !important;
+  padding: .15rem .8rem;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem) !important;
+  line-height: 1.5 !important;
+  transition: background-color .15s, color .15s;
+}
+.skills-section li:hover {
+  background-color: #a06cd5;
+  border-color: #a06cd5;
+  color: #fff;
+}
+.content-container { flex-direction: column !important; gap: 48px; }
+.skills-section, .experience-section { flex: 1 1 auto !important; padding-left: 0; }
+
+/* Phones: tighter gutters, no horizontal scroll */
+html, body { overflow-x: hidden; }
+@media (max-width: 600px) {
+  .content-container { padding: 16px !important; }
+  .quest-card h3 { font-size: 1.3rem; }
+}
