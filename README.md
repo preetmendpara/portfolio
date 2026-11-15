@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://preetmendpara.qzz.io"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=900&color=F5A623&center=true&vCenter=true&width=640&lines=Pixel-art+portfolio;Full-stack+developer;Built+with+React+%2B+PixiJS;Deployed+on+Cloudflare+Pages" alt="Pixel-art portfolio"></a>
+  <a href="https://preetmendpara.in"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=900&color=F5A623&center=true&vCenter=true&width=640&lines=Pixel-art+portfolio;Full-stack+developer;Built+with+React+%2B+PixiJS;Deployed+on+Cloudflare+Pages" alt="Pixel-art portfolio"></a>
 </p>
 
 <p align="center">
@@ -69,7 +69,7 @@ changes ride on top via `overrides.css` and `enhancements.js`.
 ---
 
 <p align="center">
-  Built by <a href="https://github.com/preetmendpara"><b>Preet Mendpara</b></a> · <a href="https://preetmendpara.qzz.io">Portfolio</a>
+  Built by <a href="https://github.com/preetmendpara"><b>Preet Mendpara</b></a> · <a href="https://preetmendpara.in">Portfolio</a>
 </p>
 
 <p align="center">
