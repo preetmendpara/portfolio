@@ -17,48 +17,6 @@ html:not([data-theme="dark"]) body {
   color: #1a1a1a;
 }
 
-/* Slim retro scrollbar — light theme */
-html:not([data-theme="dark"]) ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-html:not([data-theme="dark"]) ::-webkit-scrollbar-track {
-  background: #efe9dd;
-}
-html:not([data-theme="dark"]) ::-webkit-scrollbar-thumb {
-  background: #a06cd5;
-  border: 3px solid #efe9dd;
-  border-radius: 0; /* square = pixel aesthetic */
-}
-html:not([data-theme="dark"]) ::-webkit-scrollbar-thumb:hover {
-  background: #8a53c2;
-}
-html:not([data-theme="dark"]) {
-  scrollbar-width: thin;
-  scrollbar-color: #a06cd5 #efe9dd;
-}
-
-/* Slim retro scrollbar — dark theme */
-html[data-theme="dark"] ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-html[data-theme="dark"] ::-webkit-scrollbar-track {
-  background: #1c1c22;
-}
-html[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: #a06cd5;
-  border: 3px solid #1c1c22;
-  border-radius: 0;
-}
-html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: #b98ae0;
-}
-html[data-theme="dark"] {
-  scrollbar-width: thin;
-  scrollbar-color: #a06cd5 #1c1c22;
-}
-
 /* NOTE: no transform-based hover effects here. The compiled app positions
    some interactive elements (e.g. the theme toggle) via CSS transforms, and
    an element-level `:hover { transform: ... }` override replaces that
@@ -94,8 +52,6 @@ img {
    2026 refresh — layout, readability and responsiveness polish.
    ========================================================================== */
 
-html { scroll-behavior: smooth; }
-
 /* About: comfortable reading width and rhythm */
 .about-text p {
   max-width: 62ch;
@@ -110,14 +66,6 @@ html { scroll-behavior: smooth; }
 .quest-card p { flex: 1; }
 .quest-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 
-/* Legendary cards get a soft pulsing glow (box-shadow only, no transform) */
-@media (prefers-reduced-motion: no-preference) {
-  .quest-legendary { animation: quest-glow 3.2s ease-in-out infinite; }
-}
-@keyframes quest-glow {
-  0%, 100% { filter: drop-shadow(0 0 0 rgba(245,166,35,0)); }
-  50%      { filter: drop-shadow(0 0 10px rgba(245,166,35,.45)); }
-}
 
 /* Skills: chip grid instead of a tall single column */
 .skills-section ul {
@@ -143,7 +91,9 @@ html { scroll-behavior: smooth; }
 .skills-section, .experience-section { flex: 1 1 auto !important; padding-left: 0; }
 
 /* Phones: tighter gutters, no horizontal scroll */
-html, body { overflow-x: hidden; }
+/* clip (not hidden) so <body> never becomes its own scroll container:
+   that caused a second scrollbar and broke the scroll-triggered reveals */
+html { overflow-x: clip; }
 @media (max-width: 600px) {
   .content-container { padding: 16px !important; }
   .quest-card h3 { font-size: 1.3rem; }
