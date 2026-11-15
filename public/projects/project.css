@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "VT323";
+  src: url("/assets/vt323-latin-400-normal-wDgJuOC9.woff2") format("woff2");
+  font-display: swap;
+}
+:root {
+  --bg: #faf6ee; --text: #1a1a1a; --muted: #555; --accent: #a06cd5; --amber: #c27c0e; --card: #fff; --line: #1a1a1a;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1a1a1e; --text: #f2efe8; --muted: #b5b0a8; --accent: #b98ae0; --amber: #f5a623; --card: #232329; --line: #f2efe8; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+nav.crumbs { font-family: VT323, monospace; font-size: 1.3rem; margin-bottom: 24px; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2 { font-family: VT323, monospace; font-weight: 400; line-height: 1.1; }
+h1 { font-size: clamp(3rem, 9vw, 4.5rem); margin: 0 0 8px; color: var(--amber); }
+h2 { font-size: 2.1rem; margin: 40px 0 8px; border-bottom: 3px solid var(--line); display: inline-block; }
+.lede { font-size: 1.2rem; color: var(--muted); margin: 0 0 24px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.btn { font-family: VT323, monospace; font-size: 1.4rem; text-decoration: none; color: var(--text); border: 3px solid var(--line); padding: 4px 16px; box-shadow: 4px 4px 0 var(--line); background: var(--card); }
+.btn:hover { background: var(--accent); color: #fff; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
+.tags li { border: 2px solid currentColor; padding: 0 10px; font-family: VT323, monospace; font-size: 1.25rem; }
+footer { margin-top: 56px; padding-top: 16px; border-top: 3px dashed var(--line); font-size: .95rem; color: var(--muted); }

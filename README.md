@@ -15,10 +15,10 @@
 </p>
 
 <p align="center">
-  <a href="https://preetmendpara.qzz.io"><b>Live site</b></a> &nbsp;·&nbsp; <a href="https://github.com/preetmendpara"><b>GitHub</b></a>
+  <a href="https://preetmendpara.in"><b>Live site</b></a> &nbsp;·&nbsp; <a href="https://github.com/preetmendpara"><b>GitHub</b></a>
 </p>
 
-Live: https://preetmendpara.qzz.io (also https://preet-mendpara-portfolio.pages.dev)
+Live: https://preetmendpara.in (also https://preetmendpara.qzz.io). SEO and Google Search Console setup: [SEO.md](SEO.md)
 
 Static site hosted on Cloudflare Pages. Everything served to the browser lives in `public/`.
 
